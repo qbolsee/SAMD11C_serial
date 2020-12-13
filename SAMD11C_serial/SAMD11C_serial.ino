@@ -10,6 +10,7 @@ Version :
 
 //#define DEBUG
 #define BAUD_DEFAULT 9600
+#define PIN_TX 4
 
 
 const byte config_lookup[3][2][4] = {
@@ -54,6 +55,9 @@ void update_serial(SerialConfig new_config) {
 
 
 void setup() {
+  // prevents small voltage drops when Serial is closed then opened
+  pinMode(PIN_TX, OUTPUT);
+  digitalWrite(PIN_TX, HIGH);
   SerialUSB.begin(BAUD_DEFAULT);
   Serial2.begin(BAUD_DEFAULT);
 }
