@@ -3,7 +3,7 @@ Arduino Leonardo USB to serial
 
 Author  : Quentin Bolsee
 License : CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-Date    : 2020-07-27
+Date    : 2020-12-12
 Version :
     - 0.0 : first draft
 */
