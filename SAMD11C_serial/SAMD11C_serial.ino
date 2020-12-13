@@ -1,9 +1,9 @@
 /*
-Arduino Leonardo USB to serial
+SAMD USB to serial
 
 Author  : Quentin Bolsee
 License : CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-Date    : 2020-12-12
+Date    : 2020-07-27
 Version :
     - 0.0 : first draft
 */
@@ -43,9 +43,9 @@ void update_serial(SerialConfig new_config) {
   int j = new_config.stopbits == 2 ? 1 : 0;
   int k = (int)new_config.numbits - 5;
 
-  Serial1.flush();
-  Serial1.end();
-  Serial1.begin(new_config.baud, config_lookup[i][j][k]);
+  Serial2.flush();
+  Serial2.end();
+  Serial2.begin(new_config.baud, config_lookup[i][j][k]);
   current_config.baud = new_config.baud;
   current_config.paritytype = new_config.paritytype;
   current_config.stopbits = new_config.stopbits;
@@ -54,38 +54,38 @@ void update_serial(SerialConfig new_config) {
 
 
 void setup() {
-  Serial.begin(BAUD_DEFAULT);
-  Serial1.begin(BAUD_DEFAULT);
+  SerialUSB.begin(BAUD_DEFAULT);
+  Serial2.begin(BAUD_DEFAULT);
 }
 
 
 void loop() {
   // Detect config change
-  SerialConfig new_config = {Serial.baud(), Serial.paritytype(), Serial.stopbits(), Serial.numbits()};
+  SerialConfig new_config = {SerialUSB.baud(), SerialUSB.paritytype(), SerialUSB.stopbits(), SerialUSB.numbits()};
   if (new_config.baud != current_config.baud || new_config.paritytype != current_config.paritytype ||
       new_config.stopbits != current_config.stopbits || new_config.numbits != current_config.numbits) {
     update_serial(new_config);
   }
 
   #ifdef DEBUG
-    Serial.println("Settings: ");
-    Serial.print(current_config.baud);
-    Serial.print(", ");
-    Serial.print(current_config.paritytype);
-    Serial.print(", ");
-    Serial.print(current_config.stopbits);
-    Serial.print(", ");
-    Serial.println(current_config.numbits);
+    SerialUSB.println("Settings: ");
+    SerialUSB.print(current_config.baud);
+    SerialUSB.print(", ");
+    SerialUSB.print(current_config.paritytype);
+    SerialUSB.print(", ");
+    SerialUSB.print(current_config.stopbits);
+    SerialUSB.print(", ");
+    SerialUSB.println(current_config.numbits);
     delay(1000);
   #else
     char c;
-    if (Serial.available()) {
-      c = (char)Serial.read();
-      Serial1.write(c);
+    if (SerialUSB.available()) {
+      c = (char)SerialUSB.read();
+      Serial2.write(c);
     }
-    if (Serial1.available()) {
-      c = (char)Serial1.read();
-      Serial.write(c);
+    if (Serial2.available()) {
+      c = (char)Serial2.read();
+      SerialUSB.write(c);
     }
   #endif
 }
