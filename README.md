@@ -22,6 +22,6 @@ Other settings:
 If you have issues, you can set #define DEBUG in the sketch and use the serial monitor. The settings are continuously printed, try to change the baudrate to see if it changes accordingly.
 
 # Example board
-An example board and detailed explanations are available at [http://fabacademy.org/2020/labs/ulb/students/quentin-bolsee/projects/d11c_ftdi-updi/](http://fabacademy.org/2020/labs/ulb/students/quentin-bolsee/projects/d11c_ftdi-updi/).
+An example board and detailed explanations are available at [http://fabacademy.org/2020/labs/ulb/students/quentin-bolsee/projects/samd11c_uart-updi/](http://fabacademy.org/2020/labs/ulb/students/quentin-bolsee/projects/samd11c_uart-updi/).
 
 ![](http://fabacademy.org/2020/labs/ulb/students/quentin-bolsee/images/project_d11c_serial/production_board.jpg)
