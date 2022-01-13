@@ -4,7 +4,7 @@ Arduino sketch to use a SAMD as a serial USB bridge, supporting baudrate/parity/
 # How to use
 
 ## Install SAMD Arduino Core
-First, install the [Arduino core for SAMD](https://github.com/mattairtech/ArduinoCore-samd) and flash the appropriate bootloader on your SAMD using EDBG or another tool. It is important to erase any existing bootloader first. The SAMD should now be detected by your computer and the Arduino IDE.
+First, install the [Arduino core for SAMD](https://github.com/qbolsee/ArduinoCore-fab-sam) and flash the appropriate bootloader on your SAMD using EDBG or another tool. It is important to erase any existing bootloader first. The SAMD should now be detected by your computer and the Arduino IDE.
 
 ## Open sketch and configure
 Select the right board in **tools->board**, in our case "Generic D11C14A".
